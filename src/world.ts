@@ -21,8 +21,10 @@ import {Task} from "./components/com_task.js";
 import {Toggle} from "./components/com_toggle.js";
 import {Transform} from "./components/com_transform.js";
 import {Trigger} from "./components/com_trigger.js";
+import { Shoot } from "./components/com_shoot.js";
 
 const enum Component {
+    Shoot,
     Animate,
     AudioListener,
     AudioSource,
@@ -50,6 +52,7 @@ const enum Component {
 }
 
 export const enum Has {
+    Shoot = 1 << Component.Shoot,
     None = 0,
     Animate = 1 << Component.Animate,
     AudioListener = 1 << Component.AudioListener,
@@ -78,6 +81,7 @@ export const enum Has {
 }
 
 export class World extends WorldImpl {
+    Shoot: Array<Shoot> = [];
     Animate: Array<Animate> = [];
     AudioSource: Array<AudioSource> = [];
     Camera: Array<Camera> = [];

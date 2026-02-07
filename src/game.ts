@@ -35,6 +35,7 @@ import {sys_transform} from "./systems/sys_transform.js";
 import {sys_trigger} from "./systems/sys_trigger.js";
 import {sys_ui} from "./systems/sys_ui.js";
 import {World} from "./world.js";
+import { sys_shoot } from "./systems/sys_shoot.js";
 
 export class Game extends Game3D {
     World = new World();
@@ -100,6 +101,7 @@ export class Game extends Game3D {
         sys_render_forward(this, delta);
         sys_draw(this, delta);
         sys_ui(this, delta);
+        sys_shoot(this, delta);
     }
 }
 
@@ -109,4 +111,6 @@ export const enum Layer {
     Terrain = 2,
     Obstacle = 4,
     Collectable = 8,
+    Enemy = 1 << 2,
+    Projectile = 1 << 3,
 }

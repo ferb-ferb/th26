@@ -13,6 +13,7 @@ import {render_colored_shaded} from "../components/com_render.js";
 import {RigidKind, rigid_body} from "../components/com_rigid_body.js";
 import {transform} from "../components/com_transform.js";
 import {Game, Layer} from "../game.js";
+import { blueprint_gun } from "./blu_gun.js";
 
 export function blueprint_player(game: Game) {
     return [
@@ -26,6 +27,7 @@ export function blueprint_player(game: Game) {
         children(
             // Body.
             [
+              ...blueprint_gun(game),
                 transform(),
                 render_colored_shaded(game.MaterialColoredShaded, game.MeshCube, [1, 0.3, 0.2, 1]),
                 animate({

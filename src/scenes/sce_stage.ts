@@ -14,6 +14,7 @@ import {spawn} from "../components/com_spawn.js";
 import {set_position, set_rotation, set_scale, transform} from "../components/com_transform.js";
 import {Game} from "../game.js";
 import {World} from "../world.js";
+import { render_colored_shaded } from "../components/com_render.js";
 
 export function scene_stage(game: Game) {
     game.World = new World();
@@ -44,6 +45,14 @@ export function scene_stage(game: Game) {
         set_position(0, 1000, 1000),
         set_rotation(0, 180, 0),
     ]);
+  instantiate(game, [
+        transform([0, 1, -10], undefined, [2, 2, 2]), // pos, rot, scale
+        render_colored_shaded(
+            game.MaterialColoredShaded,
+            game.MeshCube,
+            [0, 1, 1, 1] // cyan cube
+        ),
+    ]);
 
     // Item spawner.
     instantiate(game, [
@@ -56,11 +65,11 @@ export function scene_stage(game: Game) {
         ]),
     ]);
 
-    for (let i = 0; i < 100; i++) {
-        instantiate(game, [
-            ...blueprint_obstacle(game),
-            set_position(float(-10, 10), 1, float(-10, 10)),
-            set_scale(float(0.5, 1.5), float(0.5, 1.5), float(0.5, 1.5)),
-        ]);
-    }
+    // for (let i = 0; i < 100; i++) {
+    //     instantiate(game, [
+    //         ...blueprint_obstacle(game),
+    //         set_position(float(-10, 10), 1, float(-10, 10)),
+    //         set_scale(float(0.5, 1.5), float(0.5, 1.5), float(0.5, 1.5)),
+    //     ]);
+    // }
 }
